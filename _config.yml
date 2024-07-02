@@ -1,1 +1,6 @@
 theme: minima
+layout: default
+logo: logo.jpeg
+title: 'Cool Consulting, LLC'
+tagline: 'Do more, better.'
+url: https://coolconsulting.lol
