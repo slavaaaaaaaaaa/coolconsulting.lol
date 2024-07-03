@@ -1,9 +1,7 @@
 ---
 layout: page
-title: About
+title: About us
 permalink: /about/
 ---
-
-# About us
 
 Established in 2024, we never finished this sentence.
