@@ -2,7 +2,7 @@ remote_theme: jekyll/minima
 layout: default
 logo: logo.jpeg
 title: 'Cool Consulting, LLC'
-tagline: 'Do more, better.'
+tagline: "Oui, c'est cool."
 url: https://coolconsulting.lol
 
 minima:
@@ -12,6 +12,6 @@ author:
   name: Slava I. Maslennikov
   email: us@coolconsulting.lol
 
-description: >
+description: |
   Cool Consulting, LLC
   Do more, better.
