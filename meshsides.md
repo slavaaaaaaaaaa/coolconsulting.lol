@@ -9,7 +9,7 @@ Welcome to the BSides PDX 2025 Meshtastic Workshop! Here you'll find all the lin
 
 # Introduction & Overview
 
-- [Google Slides we use for guiding the workshop](https://docs.google.com/presentation/d/18PI3UGteVU2RRYvwI3M_8WoCNd-Z2lwSQCDMxSuHbps/edit)
+- [Google Slides we use for guiding the workshop](https://docs.google.com/presentation/d/1NV6DDtEID5ZnrtPdnQmO0WdO0rxEEhatJCHDJl_QeSA/edit)
 
 # Meshtastic setup
 
