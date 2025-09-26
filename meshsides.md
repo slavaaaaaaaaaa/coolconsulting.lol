@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Meshtastic
+title: MeshSides
 permalink: /meshsides/
 ---
 
