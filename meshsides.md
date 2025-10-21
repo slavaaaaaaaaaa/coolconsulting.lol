@@ -7,7 +7,7 @@ toplink: false
 
 On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. If you were there, you received this hardware kit for your cost of entry:
 
-<img src=assets/meshsides-kit.png width="500">
+![](assets/meshsides-kit.png)
 
 On this page you'll find all the resources used for the workshop.
 
