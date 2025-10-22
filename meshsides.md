@@ -21,6 +21,7 @@ On this page you'll find all the resources used for the workshop.
     * [Meshtastic clients](#meshtastic-clients)
 - [4. Telemetry](#4-telemetry)
 - [5. Advanced features](#5-advanced-features)
+    * [Antennas](#antennas)
 - [6. How to keep progressing](#6-how-to-keep-progressing)
     * [Show and tell](#show-and-tell)
 - [Extra resources](#extra-resources)
