@@ -4,12 +4,32 @@ title: MeshSides
 permalink: /meshsides/
 toplink: false
 ---
-
-On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. If you were there, you received this hardware kit for your cost of entry:
+On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. If you're there, you received this hardware kit for your cost of entry:
 
 ![](assets/meshsides-kit.png)
 
 On this page you'll find all the resources used for the workshop.
+
+<!-- toc -->
+
+- [1. Introduction & Overview](#1-introduction--overview)
+    * [Hardware kit contents](#hardware-kit-contents)
+- [2. Installation](#2-installation)
+    * [Flashing with `esptool`](#flashing-with-esptool)
+    * [Flashing with Web flasher](#flashing-with-web-flasher)
+- [3. Basic functionality](#3-basic-functionality)
+    * [Meshtastic clients](#meshtastic-clients)
+- [4. Telemetry](#4-telemetry)
+- [5. Advanced features](#5-advanced-features)
+- [6. How to keep progressing](#6-how-to-keep-progressing)
+    * [Show and tell](#show-and-tell)
+- [Extra resources](#extra-resources)
+    * [Troubleshooting](#troubleshooting)
+    * [Communities](#communities)
+    * [Relevant projects](#relevant-projects)
+    * [Other](#other)
+
+<!-- tocstop -->
 
 # 1. Introduction & Overview
 
@@ -39,6 +59,8 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 1. [Meshtastic Web flasher](https://flasher.meshtastic.org/)
 1. Follow instructions within for official firmware
 
+[Official flashing instructions](https://meshtastic.org/docs/getting-started/) are available as well.
+
 # 3. Basic functionality
 
 ## Meshtastic clients
@@ -55,10 +77,6 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 
 - [GPS bit stripping for precision](https://docs.rs/meshtastic/latest/meshtastic/protobufs/struct.Position.html#structfield.precision_bits)
 
-# Intermission
-
-- [Smiling Friends video](https://www.youtube.com/watch?v=KFmLnprKRo0)
-
 # 5. Advanced features
 
 - [Remote node administration](https://meshtastic.org/docs/configuration/remote-admin/)
@@ -70,21 +88,31 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 
 ## Show and tell
 
-### Meshtastic BBS
-
-We [customized](https://github.com/Cool-Consulting-LLC/meshsides-bbs) an existing [TC2-BBS](https://github.com/TheCommsChannel/TC2-BBS-mesh/) project for BSides PDX. Connect to it on the default LongFast channel: `meshSides '25 BBS` aka `MS25`.
-
-### T1000-e
-
-- [Product page](https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html)
-
-### Remote hardware control
-
-- [Meshtastic documentation](https://meshtastic.org/docs/configuration/module/remote-hardware/)
+- We [customized](https://github.com/Cool-Consulting-LLC/meshsides-bbs) an existing [TC2-BBS](https://github.com/TheCommsChannel/TC2-BBS-mesh/) project for BSides PDX. Connect to it on the default LongFast channel: `meshSides '25 BBS` aka `MS25`.
+- [Seeed T1000-e product page](https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html)
+- [Meshtastic documentation on Remote Hardware](https://meshtastic.org/docs/configuration/module/remote-hardware/)
 
 # Extra resources
 
+## Troubleshooting
+
+- [Meshtastic Firmware](https://github.com/meshtastic/firmware)
+- [Meshtastic CLI](https://github.com/meshtastic/python)
+- [Meshtastic Web flasher](https://github.com/meshtastic/web-flasher)
+
+## Communities
+
+- [Meshtastic Discord](https://discord.com/invite/meshtastic)
+- [PDXMesh community (Portland)](https://discord.com/invite/y4R5sHPqaU)
+- [PugetMesh community (WA)](https://pugetmesh.org/)
+
+## Relevant projects
+
+- [Mesh Marauder](https://meshmarauder.net/)
 - [LLM-Meshtastic bridge](https://github.com/fiquett/llm-meshtastic-bridge)
 - [BBS Mesh Scripts for Meshtastic](https://github.com/SpudGunMan/meshing-around)
-- [Feedback form](https://meshsides-feedback.coolconsulting.lol)
-- [Official flashing instructions](https://meshtastic.org/docs/getting-started/)
+
+## Other
+
+- [Workshop feedback form](https://meshsides-feedback.coolconsulting.lol)
+- [Smiling Friends video from intermission](https://www.youtube.com/watch?v=KFmLnprKRo0)
