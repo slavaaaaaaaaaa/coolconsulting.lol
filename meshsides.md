@@ -57,11 +57,14 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 
 # Intermission
 
-- [Smiling friends video](https://www.youtube.com/watch?v=KFmLnprKRo0)
+- [Smiling Friends video](https://www.youtube.com/watch?v=KFmLnprKRo0)
 
 # 5. Advanced features
 
 - [Remote node administration](https://meshtastic.org/docs/configuration/remote-admin/)
+- [Ultrasonic distance sensor Meshtastic support](https://meshtastic.org/docs/configuration/module/telemetry/#:~:text=RCWL9620,Ultrasonic%20Distance%20Sensor)
+
+To enable I2C on the sensor, short M2 by soldering it together (more details on the back of the sensor).
 
 # 6. How to keep progressing
 
