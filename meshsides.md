@@ -84,6 +84,8 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 
 To enable I2C on the sensor, short M2 by soldering it together (more details on the back of the sensor).
 
+- [Mesh Marauder](https://meshmarauder.net/)
+
 # 6. How to keep progressing
 
 ## Show and tell
@@ -108,7 +110,6 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 
 ## Relevant projects
 
-- [Mesh Marauder](https://meshmarauder.net/)
 - [LLM-Meshtastic bridge](https://github.com/fiquett/llm-meshtastic-bridge)
 - [BBS Mesh Scripts for Meshtastic](https://github.com/SpudGunMan/meshing-around)
 
