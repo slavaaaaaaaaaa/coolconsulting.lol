@@ -32,6 +32,8 @@ On this page you'll find all the resources used for the workshop.
 1. Download our [event firmware binary](https://drive.google.com/drive/folders/1UPdN6XeaiWWb94XXDGoKej2iUTjExevO)
 1. `./esptool write_flash -e 0x0 bsides-pdx-firmware-2.6.11.bin`
 
+Source code for the [custom firmware is available](https://github.com/Cool-Consulting-LLC/meshtastic-firmware) for perusing and pull requests.
+
 # 3. Basic functionality
 
 ## Meshtastic clients
@@ -44,6 +46,8 @@ On this page you'll find all the resources used for the workshop.
 # 4. Telemetry
 
 # 5. Advanced features
+
+- [Remote node administration](https://meshtastic.org/docs/configuration/remote-admin/)
 
 # 6. How to keep progressing
 
