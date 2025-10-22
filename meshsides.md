@@ -118,6 +118,7 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 
 - [LLM-Meshtastic bridge](https://github.com/fiquett/llm-meshtastic-bridge)
 - [BBS Mesh Scripts for Meshtastic](https://github.com/SpudGunMan/meshing-around)
+- [Haruki’s Meshtastic Experiments](https://harukitoreda.github.io/Meshtastic-Experiments/)
 
 ## Other
 
