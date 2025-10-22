@@ -86,6 +86,11 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 
 - [Mesh Marauder](https://meshmarauder.net/)
 
+## Antennas
+
+- [Meshtastic antenna documentation](https://meshtastic.org/docs/hardware/antennas/)
+- [LoRa Propagation talk (The Things Conference, 2019)](https://www.youtube.com/watch?v=BOc3N3Yl38o)
+
 # 6. How to keep progressing
 
 ## Show and tell
