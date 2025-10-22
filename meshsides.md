@@ -34,6 +34,11 @@ On this page you'll find all the resources used for the workshop.
 
 Source code for the [custom firmware is available](https://github.com/Cool-Consulting-LLC/meshtastic-firmware) for perusing and pull requests.
 
+## Flashing with Web flasher
+
+1. [Meshtastic Web flasher](https://flasher.meshtastic.org/)
+1. Follow instructions within for official firmware
+
 # 3. Basic functionality
 
 ## Meshtastic clients
@@ -42,8 +47,17 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 - [Web UI Client](https://client.meshtastic.org/)
 - [Android apps](https://meshtastic.org/docs/software/android/installation/)
 - [iOS app](https://apple.co/3Auysep)
+- [Fun quirks](https://github.com/meshtastic/firmware/issues/5079)
 
 # 4. Telemetry
+
+![](assets/meshsides-telemetry-diagram.jpg)
+
+- [GPS bit stripping for precision](https://docs.rs/meshtastic/latest/meshtastic/protobufs/struct.Position.html#structfield.precision_bits)
+
+# Intermission
+
+- [Smiling friends video](https://www.youtube.com/watch?v=KFmLnprKRo0)
 
 # 5. Advanced features
 
