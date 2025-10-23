@@ -77,6 +77,7 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 ![](assets/meshsides-telemetry-diagram.jpg)
 
 - [GPS bit stripping for precision](https://docs.rs/meshtastic/latest/meshtastic/protobufs/struct.Position.html#structfield.precision_bits)
+- [Configuring an enable pin for the GPS module](https://meshtastic.org/docs/hardware/devices/heltec-automation/lora32/peripherals/)
 
 # 5. Advanced features
 
