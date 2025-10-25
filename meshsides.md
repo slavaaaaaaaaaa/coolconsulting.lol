@@ -14,7 +14,7 @@ On this page you'll find all the resources used for the workshop.
 
 - [1. Introduction & Overview](#1-introduction--overview)
     * [Hardware kit contents](#hardware-kit-contents)
-        + [Surprise additions](#surprise-additions)
+        + [Surprise hardware additions](#surprise-hardware-additions)
 - [2. Installation](#2-installation)
     * [Flashing with `esptool`](#flashing-with-esptool)
     * [Flashing with Web flasher](#flashing-with-web-flasher)
@@ -35,8 +35,6 @@ On this page you'll find all the resources used for the workshop.
 
 # 1. Introduction & Overview
 
-- [Introductory Montage video](https://www.youtube.com/watch?v=fmEhItNW0Q0)
-- Workshop recording - TBA depending on availability
 - [Google Slides we use for guiding the workshop](https://docs.google.com/presentation/d/1NV6DDtEID5ZnrtPdnQmO0WdO0rxEEhatJCHDJl_QeSA/edit)
 
 ## Hardware kit contents
@@ -46,7 +44,7 @@ On this page you'll find all the resources used for the workshop.
 - [HC-SR04 ultrasonic distance sensor details](https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1)
 - [BME-280 environmental sensor details](https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/)
 
-### Surprise additions
+### Surprise hardware additions
 
 - [EFF Rayhunter](https://efforg.github.io/rayhunter/)
 - [WiPhone](https://www.wiphone.io/)
@@ -130,4 +128,7 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 ## Other
 
 - [Workshop feedback form](https://meshsides-feedback.coolconsulting.lol)
+- [Introductory Montage video](https://www.youtube.com/watch?v=fmEhItNW0Q0)
 - [Smiling Friends video from intermission](https://www.youtube.com/watch?v=KFmLnprKRo0)
+- [BSidesPDX 2025 talk: From walkie-talkies to Meshtastic: an overview on communication platforms](https://www.youtube.com/watch?v=2E05D_vZJ-A)
+- Workshop recording - TBA depending on availability
