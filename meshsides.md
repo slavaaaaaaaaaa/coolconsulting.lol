@@ -4,7 +4,7 @@ title: MeshSides
 permalink: /meshsides/
 toplink: false
 ---
-On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. If you're there, you received this hardware kit for your cost of entry:
+On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. There you'll receive this hardware kit for your cost of entry:
 
 ![](assets/meshsides-kit.png)
 
