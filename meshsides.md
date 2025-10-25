@@ -14,6 +14,7 @@ On this page you'll find all the resources used for the workshop.
 
 - [1. Introduction & Overview](#1-introduction--overview)
     * [Hardware kit contents](#hardware-kit-contents)
+        + [Surprise additions](#surprise-additions)
 - [2. Installation](#2-installation)
     * [Flashing with `esptool`](#flashing-with-esptool)
     * [Flashing with Web flasher](#flashing-with-web-flasher)
@@ -44,6 +45,11 @@ On this page you'll find all the resources used for the workshop.
 - [NEO-6MV2GPS module details](https://components101.com/modules/neo-6mv2-gps-module)
 - [HC-SR04 ultrasonic distance sensor details](https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1)
 - [BME-280 environmental sensor details](https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/)
+
+### Surprise additions
+
+- [EFF Rayhunter](https://efforg.github.io/rayhunter/)
+- [WiPhone](https://www.wiphone.io/)
 
 # 2. Installation
 
