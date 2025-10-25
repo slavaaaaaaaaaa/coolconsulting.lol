@@ -1,6 +1,6 @@
 ---
 layout: page
-title: MeshSides
+title: meshSides
 permalink: /meshsides/
 toplink: false
 ---
