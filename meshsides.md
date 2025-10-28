@@ -4,7 +4,7 @@ title: meshSides
 permalink: /meshsides/
 toplink: false
 ---
-On October 25, 2025 we're hosting a Meshtastic workshop at BSides PDX: we're dubbing it meshSides '25. There you'll receive this hardware kit for your cost of entry:
+On October 25, 2025 we hosted a Meshtastic workshop at BSidesPDX: we dubbed it _meshSides '25_. If you were there, you received this hardware kit for your cost of entry:
 
 ![](assets/meshsides-kit.png)
 
@@ -43,6 +43,7 @@ On this page you'll find all the resources used for the workshop.
 - [NEO-6MV2GPS module details](https://components101.com/modules/neo-6mv2-gps-module)
 - [HC-SR04 ultrasonic distance sensor details](https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1)
 - [BME-280 environmental sensor details](https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/)
+- [A custom 3d-printed case](https://makerworld.com/en/models/1934880-case-for-heltec-v3-with-headers-meshtastic#profileId-2077419)
 
 ### Surprise hardware additions
 
@@ -131,4 +132,3 @@ To enable I2C on the sensor, short M2 by soldering it together (more details on 
 - [Introductory Montage video](https://www.youtube.com/watch?v=fmEhItNW0Q0)
 - [Smiling Friends video from intermission](https://www.youtube.com/watch?v=KFmLnprKRo0)
 - [BSidesPDX 2025 talk: From walkie-talkies to Meshtastic: an overview on communication platforms](https://www.youtube.com/watch?v=2E05D_vZJ-A)
-- Workshop recording - TBA depending on availability
