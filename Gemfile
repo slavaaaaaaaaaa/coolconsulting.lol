@@ -17,7 +17,9 @@ gem 'minima', '~> 2.5'
 group :jekyll_plugins do
   gem 'jekyll-redirect-from', '~> 0.16'
   gem 'jekyll-remote-theme', '~> 0.4'
-  gem 'jekyll-seo-tag', '~> 2.8'
+  # Pinned exactly: 2.9 emits name="twitter:*" where 2.8 emits property="twitter:*".
+  # GitHub Pages is still on 2.8.0, so floating here makes local output diverge.
+  gem 'jekyll-seo-tag', '2.8.0'
   gem 'jekyll-sitemap', '~> 1.4'
 end
 

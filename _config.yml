@@ -1,4 +1,13 @@
-remote_theme: jekyll/minima
+# Pinned to a commit, not a tag, on purpose. This site is built against minima's
+# master branch (3.x-dev): head.html links /assets/css/style.css and the social
+# includes use the {platform, user_url} config shape. The newest release, v2.5.2,
+# emits /assets/main.css and the older social format instead — pinning to the tag
+# would 404 the stylesheet and ship the site unstyled.
+#
+# Unpinned, master is a moving target that can change the site with no commit
+# here. This SHA is master as of 2026-07-31 and produces byte-identical output.
+# To move it: bump the SHA, `bundle exec jekyll build`, and diff _site.
+remote_theme: jekyll/minima@4de322363fca5927e6f4012cb94f6dad69ab5e6c
 layout: default
 logo: /logo.png
 title: 'Cool Consulting, LLC'
@@ -18,6 +27,8 @@ booking_url: https://calendar.google.com/appointments/schedules/AcZssZ2zPTJmNKjO
 # identically to the deployed site instead of falling back to kramdown's defaults.
 markdown: kramdown
 highlighter: rouge
+sass:
+  style: compressed
 kramdown:
   input: GFM
   hard_wrap: false
