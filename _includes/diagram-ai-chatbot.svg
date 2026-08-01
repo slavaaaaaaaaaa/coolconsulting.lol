@@ -1,0 +1,147 @@
+<svg class="dg" viewBox="0 0 960 520" role="img" aria-labelledby="dgTitle dgDesc"
+     xmlns="http://www.w3.org/2000/svg">
+  <title id="dgTitle">High-level architecture of the enterprise AI chatbot</title>
+  <desc id="dgDesc">A Vite app and a FastAPI service on Cloud Run handle the request path; the API
+    runs a chat orchestrator that calls an external LLM provider. Cloud SQL holds users and a pgvector
+    corpus, fed by Cloud Run jobs from knowledge sources in GCS. Secret Manager and Cloud Logging back
+    the API.</desc>
+
+  <style>
+    .dg { --dg-edge: #8b93a7; --dg-sky: #38bdf8; --dg-violet: #a970ff; --dg-amber: #f5a623;
+          --dg-green: #22c58b; --dg-coral: #ff6b5e; }
+    .dg text { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+    .dg .dg-panel { fill: var(--bg-soft, #f6f7fb); stroke: var(--border, #e6e8f0); stroke-width: 1; }
+    .dg .dg-grp { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+                  fill: var(--muted, #565d6d); }
+    .dg .dg-box { fill: var(--surface, #fff); stroke-width: 1.5; }
+    .dg .dg-t { font-family: "Space Grotesk", "Inter", sans-serif; font-size: 14px; font-weight: 600;
+                fill: var(--fg, #14161f); }
+    .dg .dg-s { font-size: 11px; fill: var(--muted, #565d6d); }
+    .dg .dg-edge { fill: none; stroke: var(--dg-edge); stroke-width: 1.6; }
+    .dg .dg-dash { stroke-dasharray: 5 5; }
+    .dg .dg-lbl { font-size: 10.5px; font-weight: 600; fill: var(--muted, #565d6d); }
+    .dg .dg-pill { fill: none; stroke: var(--border, #e6e8f0); }
+    .dg .a-sky    { stroke: var(--dg-sky); }
+    .dg .a-violet { stroke: var(--dg-violet); }
+    .dg .a-amber  { stroke: var(--dg-amber); }
+    .dg .a-green  { stroke: var(--dg-green); }
+    .dg .a-coral  { stroke: var(--dg-coral); }
+    .dg .w-sky    { fill: var(--dg-sky); }
+    .dg .w-violet { fill: var(--dg-violet); }
+    .dg .w-amber  { fill: var(--dg-amber); }
+    .dg .w-green  { fill: var(--dg-green); }
+    .dg .w-coral  { fill: var(--dg-coral); }
+    /* Accent wash over the box fill: pale in light mode, muted in dark mode. */
+    .dg .wash     { opacity: 0.10; }
+  </style>
+
+  <defs>
+    <marker id="dgArrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="7" markerHeight="6"
+            orient="auto-start-reverse">
+      <path d="M0,0 L10,4 L0,8 Z" fill="var(--dg-edge)"/>
+    </marker>
+  </defs>
+
+  <rect class="dg-pill" x="742" y="8" width="198" height="24" rx="12"/>
+  <text class="dg-s" x="841" y="24" text-anchor="middle">Google Cloud &#183; single region</text>
+
+  <!-- ============================ request path ============================ -->
+  <rect class="dg-panel" x="20" y="44" width="920" height="136" rx="16"/>
+  <text class="dg-grp" x="40" y="70">Request path</text>
+
+  <g>
+    <rect class="dg-box a-sky" x="40" y="96" width="210" height="64" rx="12"/>
+    <rect class="w-sky wash" x="40" y="96" width="210" height="64" rx="12"/>
+    <text class="dg-t" x="145" y="123" text-anchor="middle">Cloud Run &#183; app</text>
+    <text class="dg-s" x="145" y="141" text-anchor="middle">Vite SPA &#183; login + MFA</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-violet" x="304" y="96" width="190" height="64" rx="12"/>
+    <rect class="w-violet wash" x="304" y="96" width="190" height="64" rx="12"/>
+    <text class="dg-t" x="399" y="123" text-anchor="middle">Cloud Run &#183; api</text>
+    <text class="dg-s" x="399" y="141" text-anchor="middle">FastAPI &#183; HTTPS LB</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-amber" x="534" y="96" width="190" height="64" rx="12"/>
+    <rect class="w-amber wash" x="534" y="96" width="190" height="64" rx="12"/>
+    <text class="dg-t" x="629" y="123" text-anchor="middle">Chat orchestrator</text>
+    <text class="dg-s" x="629" y="141" text-anchor="middle">planner &#8594; retrieval &#8594; answer</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-amber dg-dash" x="764" y="96" width="156" height="64" rx="12"/>
+    <text class="dg-t" x="842" y="123" text-anchor="middle">LLM provider</text>
+    <text class="dg-s" x="842" y="141" text-anchor="middle">Claude &#183; streamed</text>
+  </g>
+
+  <path class="dg-edge" d="M250,128 H298" marker-end="url(#dgArrow)"/>
+  <path class="dg-edge" d="M494,128 H528" marker-end="url(#dgArrow)"/>
+  <path class="dg-edge dg-dash" d="M724,128 H758" marker-end="url(#dgArrow)"/>
+
+  <!-- ============================== platform ============================== -->
+  <rect class="dg-panel" x="20" y="228" width="240" height="268" rx="16"/>
+  <text class="dg-grp" x="40" y="254">Platform</text>
+
+  <g>
+    <rect class="dg-box" x="36" y="276" width="208" height="80" rx="12" stroke="var(--border, #e6e8f0)"/>
+    <text class="dg-t" x="140" y="302" text-anchor="middle">Secret Manager</text>
+    <text class="dg-s" x="140" y="321" text-anchor="middle">session keys &#183; DB creds</text>
+    <text class="dg-s" x="140" y="338" text-anchor="middle">third-party API keys</text>
+  </g>
+
+  <g>
+    <rect class="dg-box" x="36" y="412" width="208" height="64" rx="12" stroke="var(--border, #e6e8f0)"/>
+    <text class="dg-t" x="140" y="438" text-anchor="middle">Cloud Logging</text>
+    <text class="dg-s" x="140" y="456" text-anchor="middle">health + status reporting</text>
+  </g>
+
+  <!-- API to platform: one dashed trunk down the gutter, branching into each service -->
+  <path class="dg-edge dg-dash"
+        d="M350,160 V184 Q350,190 344,190 H278 Q272,190 272,196 V310 Q272,316 266,316 H250"
+        marker-end="url(#dgArrow)"/>
+  <path class="dg-edge dg-dash" d="M272,316 V438 Q272,444 266,444 H250" marker-end="url(#dgArrow)"/>
+
+  <!-- ============================ data & batch ============================ -->
+  <rect class="dg-panel" x="284" y="228" width="656" height="268" rx="16"/>
+  <text class="dg-grp" x="304" y="254">Data &amp; batch</text>
+
+  <g>
+    <rect class="dg-box a-green" x="304" y="276" width="190" height="72" rx="12"/>
+    <rect class="w-green wash" x="304" y="276" width="190" height="72" rx="12"/>
+    <text class="dg-t" x="399" y="306" text-anchor="middle">Cloud SQL &#183; users</text>
+    <text class="dg-s" x="399" y="324" text-anchor="middle">auth &#183; MFA &#183; sessions</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-green" x="534" y="276" width="190" height="72" rx="12"/>
+    <rect class="w-green wash" x="534" y="276" width="190" height="72" rx="12"/>
+    <text class="dg-t" x="629" y="306" text-anchor="middle">Cloud SQL &#183; pgvector</text>
+    <text class="dg-s" x="629" y="324" text-anchor="middle">chunks &#183; embeddings</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-coral" x="534" y="412" width="190" height="64" rx="12"/>
+    <rect class="w-coral wash" x="534" y="412" width="190" height="64" rx="12"/>
+    <text class="dg-t" x="629" y="438" text-anchor="middle">Cloud Run jobs</text>
+    <text class="dg-s" x="629" y="456" text-anchor="middle">migrate &#183; ingest &#183; admin</text>
+  </g>
+
+  <g>
+    <rect class="dg-box a-coral" x="764" y="412" width="156" height="64" rx="12"/>
+    <rect class="w-coral wash" x="764" y="412" width="156" height="64" rx="12"/>
+    <text class="dg-t" x="842" y="438" text-anchor="middle">Cloud Storage</text>
+    <text class="dg-s" x="842" y="456" text-anchor="middle">knowledge sources</text>
+  </g>
+
+  <path class="dg-edge" d="M399,160 V270" marker-end="url(#dgArrow)"/>
+  <text class="dg-lbl" x="409" y="219">auth</text>
+
+  <path class="dg-edge" d="M629,160 V270" marker-end="url(#dgArrow)"/>
+  <text class="dg-lbl" x="639" y="219">RAG</text>
+
+  <path class="dg-edge" d="M764,444 H730" marker-end="url(#dgArrow)"/>
+  <path class="dg-edge" d="M629,412 V354" marker-end="url(#dgArrow)"/>
+  <path class="dg-edge" d="M534,444 H409 Q399,444 399,434 V354" marker-end="url(#dgArrow)"/>
+</svg>

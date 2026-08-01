@@ -1,6 +1,6 @@
 ---
 layout: page
-title: meshSides
+title: Meshtastic workshop at BSidesPDX '25
 permalink: /meshsides/
 toplink: false
 ---

@@ -1,0 +1,6 @@
+<a class="proj-card proj-card--{{ include.accent }}" href="{{ include.url }}"{% if include.external %} target="_blank" rel="noopener"{% endif %}>
+{% if include.tag %}<span class="proj-card__tag">{{ include.tag }}</span>{% endif %}
+<h3 class="proj-card__title">{{ include.title }}</h3>
+<p class="proj-card__blurb">{{ include.blurb }}</p>
+<span class="proj-card__link">{{ include.cta | default: "Learn more" }} &rarr;</span>
+</a>

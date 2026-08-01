@@ -1,1 +1,8 @@
-// Placeholder to allow overriding predefined variables smoothly.
+// Override predefined Minima variables.
+
+// Roomier layout for card grids while keeping prose readable.
+$content-width: 960px;
+
+// Body typography (headings are set to Space Grotesk in custom-styles.scss).
+$base-font-family: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$base-line-height: 1.65;

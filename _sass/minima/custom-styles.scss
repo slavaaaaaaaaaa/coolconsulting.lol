@@ -1,2 +1,565 @@
-// Placeholder to allow defining custom styles that override everything else.
-// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+// =============================================================================
+// Cool Consulting — custom design layer
+// A CSS-custom-property palette layered on top of Minima so a manual light/dark
+// toggle (data-theme on <html>) always wins, independent of Minima's SASS skins.
+// =============================================================================
+
+// ---- Palette -------------------------------------------------------------
+:root {
+  // Neutral surfaces (light defaults)
+  --bg:          #ffffff;
+  --bg-soft:     #f6f7fb;
+  --surface:     #ffffff;
+  --surface-2:   #f2f4f9;
+  --fg:          #14161f;
+  --muted:       #565d6d;
+  --border:      #e6e8f0;
+  --link:        #2563eb;
+  --link-hover:  #1d4ed8;
+  --header-bg:   rgba(255, 255, 255, 0.82);
+  --shadow:      0 1px 2px rgba(16, 19, 34, 0.05), 0 8px 24px rgba(16, 19, 34, 0.06);
+  --shadow-lg:   0 10px 40px rgba(16, 19, 34, 0.12);
+  --code-bg:     #f2f4f9;
+
+  // Spectrum accents (one hue per capability)
+  --c-sre:       #ff6b5e;
+  --c-devops:    #a970ff;
+  --c-cloud:     #38bdf8;
+  --c-fullstack: #22c58b;
+  --c-ai:        #f5a623;
+
+  // Bright band for decorative bars.
+  --spectrum: linear-gradient(90deg, #ff6b5e, #f5a623, #22c58b, #38bdf8, #a970ff);
+  // Deeper mix that stays legible as gradient text on either background.
+  --spectrum-text: linear-gradient(92deg, #f43f5e 0%, #8b5cf6 34%, #0ea5e9 66%, #10b981 100%);
+}
+
+@mixin dark-palette {
+  --bg:          #0e1017;
+  --bg-soft:     #12151f;
+  --surface:     #171a24;
+  --surface-2:   #1c2030;
+  --fg:          #e9ebf4;
+  --muted:       #9aa2b6;
+  --border:      #272c3b;
+  --link:        #7ca8ff;
+  --link-hover:  #a9c4ff;
+  --header-bg:   rgba(14, 16, 23, 0.78);
+  --shadow:      0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg:   0 14px 44px rgba(0, 0, 0, 0.5);
+  --code-bg:     #12151f;
+  --spectrum-text: linear-gradient(92deg, #fb7185 0%, #a78bfa 34%, #38bdf8 66%, #34d399 100%);
+}
+
+// Follow the system when the visitor hasn't chosen, and honour an explicit choice.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-palette; }
+}
+:root[data-theme="dark"] { @include dark-palette; }
+
+// ---- Base ----------------------------------------------------------------
+html { scroll-behavior: smooth; overflow-x: hidden; } // contain full-bleed 100vw
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, h5, h6,
+.site-title, .hero__title, .section__title {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
+
+hr { border: 0; border-top: 1px solid var(--border); }
+
+blockquote { color: var(--muted); border-left-color: var(--c-cloud); }
+
+pre, code, .highlight { background-color: var(--code-bg) !important; border-color: var(--border); }
+
+table { border-color: var(--border); }
+table th { background-color: var(--surface-2); border-color: var(--border); }
+table td { border-color: var(--border); }
+table tr:nth-child(even) { background-color: var(--bg-soft); }
+
+.wrapper {
+  max-width: 960px;
+  @media screen and (min-width: 800px) { max-width: 960px; }
+}
+
+// Break an element out to the full viewport width (hero, CTA band).
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+// ---- Header --------------------------------------------------------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 0;
+  line-height: normal;
+  border-top: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+}
+
+// Spectrum bar pinned to the very top of the header.
+.site-header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--spectrum);
+}
+
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.site-header .logo img {
+  display: block;
+  height: 38px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.site-title {
+  margin-right: auto;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  &, &:visited { color: var(--fg); }
+  &:hover { text-decoration: none; }
+}
+
+.site-nav {
+  border: 0;
+  background: transparent;
+  .page-link {
+    color: var(--fg);
+    font-weight: 500;
+    &:hover { color: var(--link); text-decoration: none; }
+  }
+  .menu-icon > svg path { fill: var(--fg); }
+}
+
+// Mobile dropdown surface
+@media screen and (max-width: 600px) {
+  .site-nav {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+}
+
+// ---- Theme toggle --------------------------------------------------------
+.theme-toggle {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  margin-right: 46px; // room for the mobile hamburger at the far right
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+  &:hover { transform: translateY(-1px); border-color: var(--c-cloud); }
+  svg { width: 18px; height: 18px; }
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle {
+  .icon-sun { display: block; }
+  .icon-moon { display: none; }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle {
+    .icon-sun { display: block; }
+    .icon-moon { display: none; }
+  }
+}
+@media screen and (min-width: 600px) {
+  .theme-toggle { margin-right: 0; margin-left: 4px; order: 3; }
+  .site-nav { order: 2; }
+}
+
+// ---- Buttons -------------------------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  &:hover { text-decoration: none; transform: translateY(-2px); }
+}
+.btn--primary {
+  color: #fff;
+  background: linear-gradient(120deg, #6d5efc, #38bdf8);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.28);
+  &:hover { color: #fff; box-shadow: 0 12px 28px rgba(109, 94, 252, 0.35); }
+}
+.btn--ghost {
+  color: var(--fg);
+  background: var(--surface);
+  border-color: var(--border);
+  &:hover { color: var(--fg); border-color: var(--c-cloud); }
+}
+
+// ---- Hero ----------------------------------------------------------------
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 1.25rem 4.5rem;
+  text-align: center;
+  background:
+    radial-gradient(60% 80% at 15% 0%, rgba(169, 112, 255, 0.16), transparent 60%),
+    radial-gradient(60% 80% at 85% 10%, rgba(56, 189, 248, 0.16), transparent 60%),
+    var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+.hero__eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.hero__title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 0.5rem;
+  background: var(--spectrum-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.hero__tagline {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+.hero__lead {
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  font-size: 1.12rem;
+  color: var(--fg);
+}
+.hero__cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ---- Sections ------------------------------------------------------------
+.section { padding: 3.5rem 0 1rem; }
+.section__head { text-align: center; max-width: 640px; margin: 0 auto 2.25rem; }
+.section__title { font-size: clamp(1.7rem, 4vw, 2.3rem); margin: 0 0 0.6rem; }
+.section__sub { color: var(--muted); font-size: 1.05rem; margin: 0; }
+.section__more { text-align: center; margin-top: 2rem; }
+
+// ---- Capability cards ----------------------------------------------------
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+.cap-card {
+  --accent: var(--c-cloud);
+  position: relative;
+  padding: 1.6rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cap-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+.cap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+}
+.cap-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.cap-card__title { margin: 0 0 0.45rem; font-size: 1.22rem; }
+.cap-card__blurb { margin: 0; color: var(--muted); font-size: 0.97rem; line-height: 1.6; }
+
+// ---- Project cards -------------------------------------------------------
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+.proj-card {
+  --accent: var(--c-devops);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--fg);
+  transition: transform 0.18s ease, box-shadow 0.2s ease;
+  &:hover {
+    text-decoration: none;
+    color: var(--fg);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+.proj-card__tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+}
+.proj-card__title { margin: 0 0 0.4rem; font-size: 1.2rem; }
+.proj-card__blurb { margin: 0 0 1.1rem; color: var(--muted); font-size: 0.96rem; line-height: 1.6; flex: 1 0 auto; }
+.proj-card__link { font-weight: 600; color: var(--accent); font-family: "Space Grotesk", "Inter", sans-serif; }
+
+// Accent modifiers (shared by cap + project cards). Declared after both base
+// rules so they win the equal-specificity tie and set each card's --accent.
+.cap-card--sre,       .proj-card--sre       { --accent: var(--c-sre); }
+.cap-card--devops,    .proj-card--devops    { --accent: var(--c-devops); }
+.cap-card--cloud,     .proj-card--cloud     { --accent: var(--c-cloud); }
+.cap-card--fullstack, .proj-card--fullstack { --accent: var(--c-fullstack); }
+.cap-card--ai,        .proj-card--ai        { --accent: var(--c-ai); }
+
+// ---- CTA band ------------------------------------------------------------
+.cta-band {
+  margin-top: 3.5rem;
+  padding: 3.5rem 1.25rem;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(120deg, #6d5efc 0%, #38bdf8 55%, #22c58b 100%);
+}
+.cta-band__title { color: #fff; font-size: clamp(1.7rem, 4vw, 2.3rem); margin: 0 0 0.6rem; }
+.cta-band__sub { color: rgba(255, 255, 255, 0.9); margin: 0 0 1.75rem; font-size: 1.08rem; }
+.cta-band .btn--ghost {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  &:hover { background: rgba(255, 255, 255, 0.24); color: #fff; border-color: #fff; }
+}
+
+// ---- Contact page --------------------------------------------------------
+.contact-lead {
+  max-width: 44rem;
+  font-size: 1.12rem;
+  color: var(--fg);
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0 3rem;
+  padding: 2.5rem 1.75rem 2.25rem;
+  text-align: center;
+  background:
+    radial-gradient(70% 90% at 12% 0%, rgba(169, 112, 255, 0.14), transparent 62%),
+    radial-gradient(70% 90% at 88% 6%, rgba(56, 189, 248, 0.14), transparent 62%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--spectrum);
+}
+.contact-card__eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+.contact-card__email {
+  display: inline-block;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: clamp(1.35rem, 4.4vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--spectrum-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  &:hover { text-decoration: none; opacity: 0.85; }
+}
+.contact-card__note {
+  max-width: 34rem;
+  margin: 0.7rem auto 1.6rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.contact-card .hero__cta { justify-content: center; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chip {
+  --accent: var(--c-cloud);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 999px;
+  // Blend toward the text colour so pale accents stay legible in both themes.
+  color: color-mix(in srgb, var(--accent) 72%, var(--fg));
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+}
+.chip--sre       { --accent: var(--c-sre); }
+.chip--devops    { --accent: var(--c-devops); }
+.chip--cloud     { --accent: var(--c-cloud); }
+.chip--fullstack { --accent: var(--c-fullstack); }
+.chip--ai        { --accent: var(--c-ai); }
+
+.steps {
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+.steps li {
+  --accent: var(--c-cloud);
+  position: relative;
+  padding: 0.15rem 0 0 3.1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  strong { color: var(--fg); }
+}
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent) 72%, var(--fg));
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 50%;
+}
+.steps li:nth-child(1) { --accent: var(--c-devops); }
+.steps li:nth-child(2) { --accent: var(--c-cloud); }
+.steps li:nth-child(3) { --accent: var(--c-fullstack); }
+
+.contact-sig {
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+// ---- Inline diagrams -----------------------------------------------------
+// Diagrams are inlined SVG (not <img>) so they inherit the page fonts and the
+// palette variables, which keeps them legible after a light/dark toggle.
+.diagram {
+  margin: 1.9rem 0 2.1rem;
+  // Narrow screens scroll rather than shrink the labels into illegibility.
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  svg {
+    display: block;
+    width: 100%;
+    min-width: 660px;
+    height: auto;
+  }
+}
+
+// ---- Footer --------------------------------------------------------------
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--muted);
+}
+.footer-col-wrapper, .social-links { color: var(--muted); }
+.site-footer a { color: var(--link); }
+
+// ---- Page prose tweaks ---------------------------------------------------
+.page-content { padding-top: 0; }
+.post-title, .page-heading { color: var(--fg); }
+.post-meta { color: var(--muted); }
+
+// Let full-bleed home sections escape the wrapper padding cleanly.
+.home .hero:first-child { margin-top: 0; }

@@ -6,7 +6,7 @@ tagline: "Oui, c'est cool."
 url: https://coolconsulting.lol
 
 minima:
-  skin: dark
+  skin: auto
 
 author:
   name: Slava I. Maslennikov
