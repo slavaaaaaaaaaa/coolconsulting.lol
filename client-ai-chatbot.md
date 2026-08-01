@@ -3,6 +3,10 @@ layout: page
 title: Enterprise AI chatbot
 permalink: /clients/ai-chatbot/
 toplink: false
+description: >
+  How we built an MFA-protected RAG assistant on GCP: FastAPI and LangGraph,
+  hybrid pgvector plus full-text retrieval with RRF fusion, Claude answers over
+  SSE, and Terraform on Cloud Run.
 ---
 
 **Client engagement · 2026 (ongoing)** · Anonymized

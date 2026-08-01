@@ -1,12 +1,19 @@
 ---
 layout: page
 title: Meshtastic workshop at BSidesPDX '25
-permalink: /meshsides/
+permalink: /workshops/bsidespdx-25/
+redirect_from:
+  - /meshsides/
 toplink: false
+description: >
+  Every resource from meshSides '25, our Meshtastic workshop at BSidesPDX:
+  custom Heltec v3 firmware, the hardware kit, GPS and BME280 telemetry wiring,
+  antennas, and the mesh BBS we ran for attendees.
 ---
 On October 25, 2025 we hosted a Meshtastic workshop at BSidesPDX: we dubbed it _meshSides '25_. If you were there, you received this hardware kit for your cost of entry:
 
-![](assets/meshsides-kit.png)
+<img src="{{ '/assets/meshsides-kit.webp' | relative_url }}" width="1400" height="1040" decoding="async"
+     alt="The meshSides '25 kit laid out on a work mat: a Heltec WiFi LoRa 32 v3 board, a blue 3D-printed case, a 4000 mAh LiPo battery, stubby and coiled LoRa antennas, a NEO-6M GPS module with patch antenna, a BME280 environmental sensor, an HC-SR04 ultrasonic distance sensor, jumper wires, screws, and USB cables." />
 
 On this page you'll find all the resources used for the workshop.
 
@@ -79,7 +86,8 @@ Source code for the [custom firmware is available](https://github.com/Cool-Consu
 
 # 4. Telemetry
 
-![](assets/meshsides-telemetry-diagram.jpg)
+<img src="{{ '/assets/meshsides-telemetry-diagram.webp' | relative_url }}" width="1600" height="858" loading="lazy" decoding="async"
+     alt="Wiring diagram for the telemetry sensors. The NEO-6M GPS module connects to the Heltec v3: VCC to 5V, RX to pin 39 (TX in config), TX to pin 40 (RX in config), GND to ground. The BME280 connects with V to 3.3V, SDA to pin 41, and SCL to pin 42." />
 
 - [GPS bit stripping for precision](https://docs.rs/meshtastic/latest/meshtastic/protobufs/struct.Position.html#structfield.precision_bits)
 - [Configuring an enable pin for the GPS module](https://meshtastic.org/docs/hardware/devices/heltec-automation/lora32/peripherals/)

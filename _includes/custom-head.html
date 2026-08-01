@@ -1,9 +1,10 @@
-<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.png">
+<link rel="shortcut icon" type="image/png" href="{{ "/assets/favicon.png" | relative_url }}">
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted (see the @font-face block in custom-styles.scss): no
+     render-blocking third-party request, and nothing leaks to Google on load.
+     Only the latin subsets are preloaded — they cover everything above the fold. -->
+<link rel="preload" href="{{ "/assets/fonts/inter-latin.woff2" | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "/assets/fonts/space-grotesk-latin.woff2" | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 <!-- Set the theme before first paint to avoid a flash of the wrong colours. -->
 <script>
@@ -15,4 +16,58 @@
       document.documentElement.setAttribute('data-theme', theme);
     } catch (e) {}
   })();
+</script>
+
+<!-- jekyll-seo-tag emits a JSON-LD block that names the *person* as the publishing
+     Organization. This block describes the actual business, and is what we want
+     search engines to read. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "{{ site.url }}/#organization",
+  "name": "Cool Consulting, LLC",
+  "legalName": "Cool Consulting, LLC",
+  "url": "{{ site.url }}/",
+  "logo": "{{ "/logo.png" | absolute_url }}",
+  "image": "{{ "/assets/og-default.png" | absolute_url }}",
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  "slogan": "Oui, c'est cool.",
+  "email": "us@coolconsulting.lol",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Slava I. Maslennikov",
+    "jobTitle": "Principal Engineer",
+    "url": "https://slava.lol/",
+    "sameAs": [
+      "https://www.linkedin.com/in/slavaaa/",
+      "https://github.com/slavaaaaaaaaaa"
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seattle",
+    "addressRegion": "WA",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Place", "name": "Remote, worldwide" }
+  ],
+  "knowsAbout": [
+    "Site reliability engineering",
+    "DevOps and CI/CD",
+    "Google Cloud Platform",
+    "Amazon Web Services",
+    "Kubernetes",
+    "Terraform",
+    "Retrieval-augmented generation",
+    "Large language model applications"
+  ],
+  "sameAs": [
+    "https://github.com/Cool-Consulting-LLC",
+    "https://www.linkedin.com/in/slavaaa/"
+  ]
+}
 </script>

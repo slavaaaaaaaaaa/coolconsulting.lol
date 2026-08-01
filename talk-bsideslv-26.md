@@ -3,6 +3,11 @@ layout: page
 title: Broadcast, Don't Chat — BSides Las Vegas '26
 permalink: /talks/bsideslv-26/
 toplink: false
+image: /assets/og-loracast.png
+description: >
+  Why mesh chat is the wrong shape for emergency alerts, and what we built
+  instead: LoRaCast, an open-source one-way LoRa broadcast carousel with signed
+  SLIM pages, a sub-$100 gateway, and receivers from $11 that never transmit.
 ---
 
 **Upcoming talk · BSides Las Vegas 2026** · Track: _I Am The Cavalry_  

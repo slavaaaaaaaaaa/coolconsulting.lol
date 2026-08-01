@@ -4,6 +4,44 @@
 // toggle (data-theme on <html>) always wins, independent of Minima's SASS skins.
 // =============================================================================
 
+// ---- Fonts ---------------------------------------------------------------
+// Self-hosted so no render-blocking third-party request (and nothing leaks to
+// Google on page load). Both families ship as variable fonts, so one file per
+// subset covers every weight the design uses. Paths are relative to the compiled
+// stylesheet at /assets/css/style.css.
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 // ---- Palette -------------------------------------------------------------
 :root {
   // Neutral surfaces (light defaults)
@@ -58,7 +96,9 @@
 :root[data-theme="dark"] { @include dark-palette; }
 
 // ---- Base ----------------------------------------------------------------
-html { scroll-behavior: smooth; overflow-x: hidden; } // contain full-bleed 100vw
+// Reserve the scrollbar's gutter at all widths so 100vw (see .full-bleed) always
+// matches the space actually available, instead of overflowing by the scrollbar.
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 body {
   background-color: var(--bg);
@@ -93,11 +133,42 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
 }
 
 // Break an element out to the full viewport width (hero, CTA band).
+// border-box matters: these sections carry their own side padding, which would
+// otherwise be added on top of the 100vw and push the page 2.5rem wider than
+// the viewport. That overflow used to be hidden by `overflow-x: hidden`.
 .full-bleed {
+  box-sizing: border-box;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
+
+// Content images carry width/height attributes to reserve their space, so they
+// need height:auto to stay proportional once max-width kicks in.
+img { max-width: 100%; height: auto; }
+
+// ---- Skip link -----------------------------------------------------------
+// Visually hidden until focused; the sticky header would otherwise trap keyboard
+// users at the top of every page.
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 12px 18px;
+  border-radius: 0 0 10px 0;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: var(--shadow);
+  &:focus {
+    left: 0;
+    text-decoration: none;
+    outline: 2px solid var(--c-cloud);
+    outline-offset: 2px;
+  }
+}
+.page-content:focus { outline: none; }
 
 // ---- Header --------------------------------------------------------------
 .site-header {
@@ -190,12 +261,6 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
 :root[data-theme="dark"] .theme-toggle {
   .icon-sun { display: block; }
   .icon-moon { display: none; }
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle {
-    .icon-sun { display: block; }
-    .icon-moon { display: none; }
-  }
 }
 @media screen and (min-width: 600px) {
   .theme-toggle { margin-right: 0; margin-left: 4px; order: 3; }
@@ -330,6 +395,84 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
 }
 .cap-card__title { margin: 0 0 0.45rem; font-size: 1.22rem; }
 .cap-card__blurb { margin: 0; color: var(--muted); font-size: 0.97rem; line-height: 1.6; }
+
+// ---- Offer cards ---------------------------------------------------------
+// The two lead offers on the homepage. Deliberately heavier than .cap-card so
+// the page reads as "here are two things we do" before "here is the spectrum".
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.4rem;
+}
+.offer-card {
+  --accent: var(--c-cloud);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.75rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+.offer-card__tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 72%, var(--fg));
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+.offer-card__title { margin: 0 0 0.6rem; font-size: 1.42rem; line-height: 1.25; }
+.offer-card__blurb { margin: 0 0 1.1rem; color: var(--muted); font-size: 1rem; line-height: 1.65; }
+.offer-card__points {
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+  flex: 1 0 auto;
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--fg);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+}
+.offer-card__link {
+  align-self: flex-start;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  &:hover { text-decoration: none; opacity: 0.85; }
+}
+.offer-card--sre       { --accent: var(--c-sre); }
+.offer-card--devops    { --accent: var(--c-devops); }
+.offer-card--cloud     { --accent: var(--c-cloud); }
+.offer-card--fullstack { --accent: var(--c-fullstack); }
+.offer-card--ai        { --accent: var(--c-ai); }
 
 // ---- Project cards -------------------------------------------------------
 .proj-grid {
@@ -476,6 +619,11 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
   background: color-mix(in srgb, var(--accent) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
 }
+// Chips are sometimes wrapped around links (see 404) — keep the chip's colour.
+.chip a {
+  color: inherit;
+  &:hover { color: inherit; text-decoration: underline; }
+}
 .chip--sre       { --accent: var(--c-sre); }
 .chip--devops    { --accent: var(--c-devops); }
 .chip--cloud     { --accent: var(--c-cloud); }
@@ -530,6 +678,31 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
   font-size: 0.95rem;
 }
 
+// ---- About page bio ------------------------------------------------------
+.bio {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin: 1.5rem 0 2.5rem;
+  flex-wrap: wrap;
+}
+.bio__photo {
+  flex: 0 0 auto;
+  width: 168px;
+  height: 168px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.bio__body { flex: 1 1 300px; }
+.bio__lead {
+  font-size: 1.18rem;
+  color: var(--fg);
+  margin: 0 0 0.75rem;
+}
+.bio__body p:last-child { margin-bottom: 0; color: var(--muted); }
+
 // ---- Inline diagrams -----------------------------------------------------
 // Diagrams are inlined SVG (not <img>) so they inherit the page fonts and the
 // palette variables, which keeps them legible after a light/dark toggle.
@@ -556,6 +729,29 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
 .footer-col-wrapper, .social-links { color: var(--muted); }
 .site-footer a { color: var(--link); }
 
+// Social icons are inlined SVG paths (see social-item.html), so they take their
+// colour from the theme variables rather than Minima's hard-coded grey.
+.social-media-list .svg-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--muted);
+  transition: fill 0.2s ease;
+}
+.social-media-list a:hover .svg-icon { fill: var(--link); }
+
+// Accessible label for icon-only links.
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 // ---- Page prose tweaks ---------------------------------------------------
 .page-content { padding-top: 0; }
 .post-title, .page-heading { color: var(--fg); }
@@ -563,3 +759,23 @@ table tr:nth-child(even) { background-color: var(--bg-soft); }
 
 // Let full-bleed home sections escape the wrapper padding cleanly.
 .home .hero:first-child { margin-top: 0; }
+
+// ---- Reduced motion ------------------------------------------------------
+// Last in the file so it overrides every transition and lift declared above.
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn:hover,
+  .cap-card:hover,
+  .proj-card:hover,
+  .theme-toggle:hover { transform: none; }
+}

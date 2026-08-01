@@ -1,0 +1,12 @@
+{%- assign points = include.points | split: "|" -%}
+<article class="offer-card offer-card--{{ include.accent }}">
+<span class="offer-card__tag">{{ include.tag }}</span>
+<h3 class="offer-card__title">{{ include.title }}</h3>
+<p class="offer-card__blurb">{{ include.blurb }}</p>
+<ul class="offer-card__points">
+{%- for point in points %}
+<li>{{ point | strip }}</li>
+{%- endfor %}
+</ul>
+<a class="offer-card__link" href="{{ include.url }}">{{ include.cta | default: "See how it went" }} &rarr;</a>
+</article>

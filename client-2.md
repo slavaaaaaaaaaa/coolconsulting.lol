@@ -3,6 +3,10 @@ layout: page
 title: Music streaming platform
 permalink: /clients/engagement-2/
 toplink: false
+description: >
+  Taking a music streaming startup from a laptop prototype to multi-environment
+  GCP: Terraform-built dev and prod projects, Cloud Run behind an HTTPS load
+  balancer, and a Fastly CDN with signed private-path auth for audio.
 ---
 
 **Client engagement · 2025** · Anonymized

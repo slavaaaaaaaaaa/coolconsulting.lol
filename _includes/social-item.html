@@ -1,7 +1,14 @@
-<li>{% assign entry = include.item %}
-  <a {% unless entry.platform == 'rss' %}rel="me" {% endunless %}href="{{ entry.user_url }}" target="_blank" title="{{ entry.title | default: entry.platform }}">
-    <svg class="svg-icon grey">
-      <use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: entry.platform | relative_url }}"></use>
+{%- assign entry = include.item -%}
+<li>
+  <a rel="me noopener" href="{{ entry.user_url }}" target="_blank" title="{{ entry.title | default: entry.platform }}">
+    {%- comment -%}
+      Icons are inlined rather than pulled out of a sprite: the theme's
+      assets/minima-social-icons.svg is not emitted by the remote theme this site
+      pulls, so a <use xlink:href> here would render nothing at all.
+    {%- endcomment -%}
+    <svg class="svg-icon grey" viewBox="0 0 16 16" fill-rule="evenodd" clip-rule="evenodd" aria-hidden="true">
+      {%- include social-icons/{{ entry.platform }}.svg -%}
     </svg>
+    <span class="u-visually-hidden">{{ entry.title | default: entry.platform }}</span>
   </a>
 </li>

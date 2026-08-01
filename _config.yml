@@ -1,16 +1,56 @@
 remote_theme: jekyll/minima
 layout: default
-logo: logo.jpeg
+logo: /logo.png
 title: 'Cool Consulting, LLC'
 tagline: "Oui, c'est cool."
 url: https://coolconsulting.lol
 
+description: >
+  A boutique engineering consultancy in Seattle. GCP and AWS platform
+  engineering, SRE, and LLM products built to survive production.
+
+# Google Calendar appointment schedule — referenced as {{ site.booking_url }} so
+# the link lives in one place rather than pasted into every page.
+booking_url: https://calendar.google.com/appointments/schedules/AcZssZ2zPTJmNKjOw3syRjErhRpK7Qa96LlS7Lva-naJGHdenR_4fWFkua_HBmZTHwZ9CaEI0t5X7Hlq
+
+# GitHub Pages forces these regardless of what is set here; declaring them
+# explicitly is what makes a local `bundle exec jekyll serve` render markdown
+# identically to the deployed site instead of falling back to kramdown's defaults.
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  gfm_quirks: paragraph_end
+  syntax_highlighter: rouge
+
+# Declaring plugins here replaces the list the theme would otherwise supply, so
+# every plugin the site depends on has to be named explicitly — drop one and the
+# {% seo %} call in _includes/head.html silently stops rendering.
+plugins:
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Sitewide link-preview card. Any page can override with `image:` in front matter.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/og-default.png
+
+twitter:
+  card: summary_large_image
+
 minima:
   skin: auto
+  social_links:
+    - platform: github
+      user_url: "https://github.com/Cool-Consulting-LLC"
+    - platform: linkedin
+      user_url: "https://www.linkedin.com/in/slavaaa/"
 
 author:
   name: Slava I. Maslennikov
   email: us@coolconsulting.lol
-
-description: >
-  Simple A to B.

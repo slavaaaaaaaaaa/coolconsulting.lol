@@ -3,6 +3,10 @@ layout: page
 title: Engineering Culture
 permalink: /talks/engineering-culture/
 toplink: false
+description: >
+  Our LayerOne 2025 talk on creating, maintaining, and recognising a
+  high-quality technical environment — how culture shows up in the code, the
+  incidents, and the day-to-day craft.
 ---
 
 **Talk · LayerOne 2025**

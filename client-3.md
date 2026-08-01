@@ -3,6 +3,10 @@ layout: page
 title: GCP & Workspace migration
 permalink: /clients/engagement-3/
 toplink: false
+description: >
+  Leading a large GCP and Google Workspace migration from the PM, leadership,
+  and SRE seat — org and IAM structure, a reversible cutover sequence, and the
+  runbooks that kept it operable alongside an overseas delivery partner.
 ---
 
 **Client engagement · September – November 2025** · Anonymized
