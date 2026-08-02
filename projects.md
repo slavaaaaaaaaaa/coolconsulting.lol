@@ -24,8 +24,8 @@ Each card is colour-coded by the practice it belongs to:
 
 <div class="proj-grid">
 {% include proj-card.html accent="ai" tag="2026 (ongoing)" title="Enterprise chatbot" url="/clients/ai-chatbot/" blurb="Anonymized. MFA-protected RAG chatbot on GCP: Claude, hybrid pgvector retrieval, Terraform on Cloud Run." %}
-{% include proj-card.html accent="cloud" tag="2025" title="Music streaming platform" url="/clients/engagement-2/" blurb="Anonymized. Took a streaming startup from laptop prototype to multi-env GCP: Cloud Run API, Fastly media CDN, Terraform + CI." %}
-{% include proj-card.html accent="cloud" tag="Sep – Nov 2025" title="GCP & Workspace migration" url="/clients/engagement-3/" blurb="Anonymized. Led a large GCP + Workspace migration with an overseas partner — PM, leadership, and SRE: plans, docs, cutover, and operability." %}
+{% include proj-card.html accent="cloud" tag="Feb – May 2025" title="Music streaming platform" url="/clients/engagement-2/" blurb="Anonymized. Took a streaming startup from laptop prototype to multi-env GCP: Cloud Run API, Fastly media CDN, Terraform + CI." %}
+{% include proj-card.html accent="cloud" tag="Sep – Nov 2025" title="GCP & Workspace migration" url="/clients/engagement-3/" blurb="Anonymized. Led a 30 TB GCP + Workspace migration with an overseas partner — PM, leadership, and SRE: plans, docs, staged overnight cutover, and operability." %}
 </div>
 
 ### Workshops

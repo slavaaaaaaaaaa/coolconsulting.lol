@@ -678,6 +678,56 @@ img { max-width: 100%; height: auto; }
   font-size: 0.95rem;
 }
 
+// ---- Outcome tiles -------------------------------------------------------
+// Case-study receipts. No plot, so no hover layer. The accent rule carries the
+// practice identity; the value and label stay in text ink rather than the accent,
+// so a number is never legible by colour alone. Deltas use a glyph, not colour.
+.outcomes {
+  --accent: var(--c-cloud);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin: 1.6rem 0 2.2rem;
+}
+.outcome {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.outcome__value {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 1.95rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  // Proportional figures on purpose: tabular-nums pads every digit to a zero's
+  // width, which reads loose at display sizes. Tables keep tabular.
+  font-variant-numeric: proportional-nums;
+}
+.outcome__label {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.outcome__note {
+  margin-top: 0.45rem;
+  font-size: 0.84rem;
+  color: var(--muted);
+  opacity: 0.85;
+}
+.outcomes--sre       { --accent: var(--c-sre); }
+.outcomes--devops    { --accent: var(--c-devops); }
+.outcomes--cloud     { --accent: var(--c-cloud); }
+.outcomes--fullstack { --accent: var(--c-fullstack); }
+.outcomes--ai        { --accent: var(--c-ai); }
+
 // ---- About page bio ------------------------------------------------------
 .bio {
   display: flex;

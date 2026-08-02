@@ -43,12 +43,12 @@ description: >
 <section class="section">
 <div class="section__head">
 <h2 class="section__title">Client work</h2>
-<p class="section__sub">Engagements we've shipped. Anonymized, but the architecture is real.</p>
+<p class="section__sub">Engagements we've shipped &mdash; every one of them a referral. Anonymized, but the architecture is real.</p>
 </div>
 <div class="proj-grid">
 {% include proj-card.html accent="ai" tag="2026 (ongoing)" title="Enterprise AI chatbot" url="/clients/ai-chatbot/" blurb="A MFA-protected RAG assistant on GCP — Claude answers grounded in a curated knowledge corpus." %}
-{% include proj-card.html accent="cloud" tag="2025" title="Music streaming platform" url="/clients/engagement-2/" blurb="Laptop prototype to multi-env GCP: Cloud Run API, Fastly media CDN with signed private paths, Terraform and CI." %}
-{% include proj-card.html accent="devops" tag="Sep – Nov 2025" title="GCP & Workspace migration" url="/clients/engagement-3/" blurb="Led a large migration from the PM, leadership, and SRE seat, alongside an overseas delivery partner." %}
+{% include proj-card.html accent="cloud" tag="Feb – May 2025" title="Music streaming platform" url="/clients/engagement-2/" blurb="Laptop prototype to multi-env GCP: Cloud Run API, Fastly media CDN with signed private paths, Terraform and CI." %}
+{% include proj-card.html accent="devops" tag="Sep – Nov 2025" title="GCP & Workspace migration" url="/clients/engagement-3/" blurb="30 TB and 35 seats onto GCP and Workspace, led from the PM, leadership, and SRE seat alongside an overseas partner." %}
 </div>
 </section>
 

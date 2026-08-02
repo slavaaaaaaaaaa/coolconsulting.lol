@@ -39,4 +39,8 @@ description: >
 <li><strong>We scope it.</strong> <a href="{{ site.booking_url }}" target="_blank" rel="noopener">A short call</a> — grab a slot whenever suits you — then a plan with milestones you can hold us to.</li>
 </ol>
 
+### Checking us out
+
+Every engagement we've taken has come from a referral rather than a pitch, so we'd rather you verify us the same way. Our client work is under NDA and we don't publish testimonials — but **references are available on request**. Ask, and we'll put you in touch with someone who has actually hired us.
+
 <p class="contact-sig"><em>Oui, c'est cool.</em> Established 2024 — Cool Consulting, LLC.</p>

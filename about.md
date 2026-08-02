@@ -23,6 +23,8 @@ There is no bench sitting idle, and no account manager between you and the engin
 
 For a platform build or an AI product, that's usually one to three people. For a migration spanning an org, it's a partner team with us leading — which is exactly the shape of the [GCP and Workspace migration]({{ "/clients/engagement-3/" | relative_url }}) we ran.
 
+**Every engagement so far has come from a referral.** Someone who had worked with us brought us in; we have never made a cold call, and there is no salesperson here to make one. That's worth stating plainly because of what it costs the other person — a referral spends the referrer's own credibility, which is a considerably higher bar than a quote on a website. Our clients' work is under NDA and we don't publish testimonials, but references are available on request.
+
 ### Where this comes from
 
 Ten years of building and running cloud platforms, most of it in consulting:

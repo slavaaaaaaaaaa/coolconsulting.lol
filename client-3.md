@@ -4,14 +4,25 @@ title: GCP & Workspace migration
 permalink: /clients/engagement-3/
 toplink: false
 description: >
-  Leading a large GCP and Google Workspace migration from the PM, leadership,
+  Leading a 35-seat, 30 TB+ GCP and Google Workspace migration from the PM, leadership,
   and SRE seat — org and IAM structure, a reversible cutover sequence, and the
   runbooks that kept it operable alongside an overseas delivery partner.
 ---
 
 **Client engagement · September – November 2025** · Anonymized
 
-A large-scale move onto Google Cloud and Google Workspace — identity, productivity, and the cloud foundation underneath. We led the engagement from the PM, leadership, and SRE seat: planning the cutover, keeping stakeholders aligned across time zones, and making sure the systems that landed were operable, not just migrated.
+A move onto Google Cloud and Google Workspace — identity, productivity, and the cloud foundation underneath. We led the engagement from the PM, leadership, and SRE seat: planning the cutover, keeping stakeholders aligned across time zones, and making sure the systems that landed were operable, not just migrated.
+
+### Outcomes
+
+<div class="outcomes outcomes--cloud">
+{% include outcome.html value="30 TB+" label="of user data migrated, across 35 seats" %}
+{% include outcome.html value="~500 → 10" label="projects triaged down to the GCP projects actually needed" note="alongside ~500 accounts reviewed with the client" %}
+{% include outcome.html value="3 stages" label="dev, then stage, then prod — never a big-bang cutover" %}
+{% include outcome.html value="Off-peak" label="every cutover window ran overnight, across a single week" %}
+</div>
+
+The number we are proudest of is the one that shrank. The client arrived with roughly 500 accounts and 500 projects accumulated over years, and the instinct in a migration like this is to move all of it. Instead we went through the inventory with them and worked out what was actually load-bearing — which is how ten GCP projects ended up carrying what five hundred nominally held.
 
 ### The story
 
@@ -28,6 +39,7 @@ By November the org was on GCP and Workspace with a documented operating picture
 - **Workspace rollout** — identity and productivity cutover support, admin and user-facing guidance, and sequenced go-live coordination
 - **Operability & SRE** — runbooks, architecture and request-flow docs, ownership maps, and post-cutover habits so the platform stayed supportable
 - **Partner coordination** — clear interfaces between remote delivery and local leadership so status, blockers, and handoffs didn’t get lost across time zones
+- **Dependency mapping before cutover** — we traced which services depended on what, so every window had a known blast radius and a stated expected downtime rather than a hope
 
 ### Stack at a glance
 

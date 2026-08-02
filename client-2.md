@@ -9,9 +9,26 @@ description: >
   balancer, and a Fastly CDN with signed private-path auth for audio.
 ---
 
-**Client engagement · 2025** · Anonymized
+**Client engagement · February – May 2025** · Anonymized
 
-A music streaming startup building a listener app, artist tools, and the cloud platform underneath. We embedded for the year to take them from “prototype on a laptop” to a deployable, multi-environment stack on GCP — the kind of foundation a streaming product actually needs before the catalog and the CDN matter.
+A music streaming startup building a listener app, artist tools, and the cloud platform underneath. We embedded to take them from “prototype on a laptop” to a deployable, multi-environment stack on GCP — the kind of foundation a streaming product actually needs before the catalog and the CDN matter.
+
+### Outcomes
+
+<div class="outcomes outcomes--cloud">
+{% include outcome.html value="3" label="environments built from one Terraform codebase" note="dev, prod, and a shared global layer" %}
+{% include outcome.html value="59" label="cloud resources under version control, across 12 GCP services" note="previously click-ops" %}
+{% include outcome.html value="0" label="long-lived cloud credentials in CI" note="replaced by Workload Identity Federation" %}
+{% include outcome.html value="Signed" label="private audio paths, verified at the edge before origin" note="HMAC-SHA256, expiry-checked in CDN VCL" %}
+</div>
+
+The credential number matters more than it looks. CI authenticates to GCP through Workload Identity Federation with an attribute condition pinned to the organization, so no exportable service-account key exists to leak from a repo, a laptop, or a compromised action.
+
+### The platform we built
+
+<div class="diagram">{% include diagram-streaming.svg %}</div>
+
+Clients load the app from IAP-protected Cloud Run frontends and call the Go backend through a managed HTTPS load balancer. Audio never goes through the API: it is served from GCS via Fastly, which validates a signed, expiring token at the edge and re-signs the origin request before the object is ever fetched. The backend leans on Cloud SQL, Memorystore, and Pub/Sub topics for transcode and thumbnail work, with every credential in Secret Manager. The whole thing is one Terraform codebase applied to a separate GCP project per environment.
 
 ### The story
 
@@ -21,7 +38,7 @@ We started with the boring, load-bearing pieces. Terraform carved out **dev** an
 
 The streaming-specific work was the edge. Audio and image objects live in regional GCS buckets; a **Fastly** CDN sits in front with custom VCL that authenticates private paths (HMAC-signed tokens, secrets rotated into Secret Manager) while still serving public assets cleanly. Logging from the CDN lands back in GCS so edge behaviour is inspectable. Along the way we documented the request and auth flows as diagrams the rest of the team could actually use.
 
-By mid-year the path from merge to a smoke-tested Cloud Run revision was real, the CDN could gate private media, and the environments were identical enough that “works in dev” meant something. The product kept evolving on top of that platform — we left them with infra they could operate, not a one-off demo deploy.
+By the end of the engagement the path from merge to a smoke-tested Cloud Run revision was real, the CDN could gate private media, and the environments were identical enough that “works in dev” meant something. The product kept evolving on top of that platform after we handed it over — we left them with infra they could operate, not a one-off demo deploy.
 
 ### What we delivered
 
