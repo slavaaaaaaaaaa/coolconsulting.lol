@@ -26,6 +26,10 @@ Measured July 2026. Latency figures come from our own load harness driving 40 co
 
 The headline improvement was not model choice — it was discovering that naive concurrency was converting into provider 429s, each costing 5–30 s of backoff. Client-side rate limiting coordinated service-wide, tuned to sit deliberately under the provider's per-bucket ceiling, turned a two-and-a-half-minute worst case into ten seconds.
 
+**The client has since extended scope twice** — once to add another language to the retrieval and answer paths, and once for a verification feature that checks a submitted application against the program's eligibility and completeness rules, then reports back what is missing or non-compliant.
+
+That second one is a different shape of problem from question answering. A chatbot can be usefully approximate; a correctness check cannot, because being confidently wrong about a rule is worse than declining to answer. So the rules live in a hand-authored, reviewable layer that the check evaluates against, with explicit references pulling in the exact source documents — not inferred from the corpus and hoped for.
+
 ### High-level architecture
 
 <div class="diagram">{% include diagram-ai-chatbot.svg %}</div>
@@ -36,7 +40,8 @@ A browser SPA (login + MFA) talks to a FastAPI service over an HTTPS load balanc
 
 - **Streaming chat UI** — TypeScript SPA (Vite, Tailwind) with login, MFA enrollment, idle session timeout, feedback capture, and an optional retrieval/debug panel for operators
 - **RAG API** — Python FastAPI with LangGraph orchestration: query contextualization, pipeline routing across corpus namespaces, hybrid full-text + vector retrieval (RRF fusion), and Claude answer generation over SSE
-- **Knowledge pipeline** — document ingest (extract → chunk → embed → store), glossary-aware multilingual answers (English corpus; French and Spanish query paths), and tunable chunk/embedding config
+- **Knowledge pipeline** — document ingest (extract → chunk → embed → store), glossary-aware multilingual answers (English-authored corpus, multiple non-English query paths), and tunable chunk/embedding config
+- **Application verification** — a curated rule layer, authored and reviewed rather than inferred, that a submission can be checked against for eligibility and completeness, with deterministic references into the source documents behind each rule
 - **Security posture** — JWT sessions, rate-limited login with lockout, CORS/TLS hardening, region-pinned data (`us-central1`), and production flags that strip debug payloads
 - **Infrastructure** — Terraform on GCP (Cloud Run, Cloud SQL / pgvector, GCS, Vertex AI embeddings), GitHub Actions CI, golden-question evaluation suites for English and multilingual quality
 
