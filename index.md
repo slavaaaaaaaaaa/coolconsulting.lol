@@ -58,7 +58,7 @@ description: >
 <p class="section__sub">Why we're worth hiring: the radio work, the talks, and the code we publish.</p>
 </div>
 <div class="proj-grid">
-{% include proj-card.html accent="sre" tag="Upcoming · BSidesLV '26" title="Broadcast, Don't Chat" url="/talks/bsideslv-26/" blurb="Hyperlocal emergency status over one-way LoRa with LoRaCast — receivers from $11 that never transmit." %}
+{% include proj-card.html accent="sre" tag="Talk · BSidesLV '26" title="Broadcast, Don't Chat" url="/talks/bsideslv-26/" blurb="Hyperlocal emergency status over one-way LoRa with LoRaCast — receivers from $11 that never transmit." %}
 {% include proj-card.html accent="fullstack" tag="Workshop · BSidesPDX '25" title="Hands-on Meshtastic, start to finish" url="/workshops/bsidespdx-25/" blurb="Custom Heltec v3 firmware, hardware kits, a telemetry pipeline, and a mesh BBS — every resource published." %}
 {% include proj-card.html accent="devops" tag="Open source · R&amp;D" title="why-am-i" url="https://github.com/Cool-Consulting-LLC/why-am-i" external=true blurb="A pocket LoRa social radar: direction and distance to your group from RSSI and SNR alone — no GPS, no phones." cta="View on GitHub" %}
 </div>

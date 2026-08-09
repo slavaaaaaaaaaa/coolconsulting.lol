@@ -39,7 +39,7 @@ Each card is colour-coded by the practice it belongs to:
 ### Talks
 
 <div class="proj-grid">
-{% include proj-card.html accent="sre" tag="Upcoming · BSidesLV '26" title="Broadcast, Don't Chat" url="/talks/bsideslv-26/" blurb="Hyperlocal emergency status on $11 radios with LoRaCast — why mesh chat is the wrong shape for one-to-many alerts." %}
+{% include proj-card.html accent="sre" tag="Talk · BSidesLV '26" title="Broadcast, Don't Chat" url="/talks/bsideslv-26/" blurb="Hyperlocal emergency status on $11 radios with LoRaCast — why mesh chat is the wrong shape for one-to-many alerts." %}
 {% include proj-card.html accent="sre" tag="Talk · BSidesPDX '25" title="From walkie-talkies to Meshtastic" url="/talks/walkie-talkies-to-meshtastic/" blurb="An overview of communication platforms from walkie-talkies through to Meshtastic." %}
 {% include proj-card.html accent="sre" tag="Talk · BSidesLV '25" title="Can you hear me now?" url="/talks/can-you-hear-me-now/" blurb="A survey of communications platforms during emergencies — what still works when infrastructure fails." %}
 {% include proj-card.html accent="devops" tag="Talk · LayerOne '25" title="Engineering Culture" url="/talks/engineering-culture/" blurb="Creating, maintaining, and identifying a high-quality technical environment." %}
